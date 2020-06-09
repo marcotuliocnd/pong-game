@@ -14,11 +14,14 @@ public class Player {
   public int width;
   public int height;
 
-  public Player(int x, int y) {
+  public Color playerColor;
+
+  public Player(int x, int y, Color color) {
     this.x = x;
     this.y = y;
     this.width = 40;
     this.height = 5;
+    this.playerColor = color;
   }
 
   public void tick() {
@@ -36,7 +39,7 @@ public class Player {
   }
 
   public void render(Graphics g) {
-    g.setColor(Color.BLUE);
+    g.setColor(this.playerColor);
     g.fillRect(x, y, width, height);
   }
 }

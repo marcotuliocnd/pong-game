@@ -44,7 +44,7 @@ public class Ball {
 
     Rectangle bounds = new Rectangle((int) (this.x + (this.directionX*this.speed)), (int) (this.y + (this.directionY * this.speed)), this.width, this.height);
     Rectangle boundsPlayer = new Rectangle(Game.player.x, Game.player.y, Game.player.width, Game.player.height);
-    Rectangle boundsEnemy = new Rectangle((int) Game.enemy.x, (int) Game.enemy.y, Game.enemy.width, Game.enemy.height);
+    Rectangle boundsEnemy = new Rectangle((int) Game.playerSecond.x, (int) Game.playerSecond.y, Game.playerSecond.width, Game.playerSecond.height);
 
     if (bounds.intersects(boundsPlayer)) {
       int angle = new Random().nextInt(75) + 45;

@@ -20,7 +20,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public BufferedImage layer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
     public static Player player;
-    public static Enemy enemy;
+    public static Player playerSecond;
     public static Ball ball;
 
     public static void main(String[] args) {
@@ -39,14 +39,14 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public Game() {
         this.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         this.addKeyListener(this);
-        player = new Player(80, HEIGHT-5);
-        enemy = new Enemy(80, 0);
+        player = new Player(80, HEIGHT-5, Color.RED);
+        playerSecond = new Player(80, 0, Color.PINK);
         ball = new Ball(80, (HEIGHT/2) - 1);
     }
 
     public void tick() {
         player.tick();
-        enemy.tick();
+        playerSecond.tick();
         ball.tick();
     }
 
@@ -61,7 +61,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         g.setColor(Color.black);
         g.fillRect(0, 0, WIDTH, HEIGHT);
         player.render(g);
-        enemy.render(g);
+        playerSecond.render(g);
         ball.render(g);
 
         g = bs.getDrawGraphics();
@@ -86,7 +86,6 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
@@ -99,6 +98,14 @@ public class Game extends Canvas implements Runnable, KeyListener {
             case KeyEvent.VK_LEFT:
                 player.left = true;
                 break;
+
+            case KeyEvent.VK_D:
+                playerSecond.right = true;
+                break;
+            
+            case KeyEvent.VK_A:
+                playerSecond.left = true;
+                break;
         }
     }
 
@@ -110,6 +117,14 @@ public class Game extends Canvas implements Runnable, KeyListener {
             
             case KeyEvent.VK_LEFT:
                 player.left = false;
+                break;
+
+            case KeyEvent.VK_D:
+                playerSecond.right = false;
+                break;
+            
+            case KeyEvent.VK_A:
+                playerSecond.left = false;
                 break;
         }
     }
